@@ -11,7 +11,13 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
 BOARD_VENDOR_QCOM_LOC_PDK_FEATURE_SET := true
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+# Hardware
+BOARD_USES_CYANOGEN_HARDWARE := true
+
+>>>>>>> 3cc8121... marlin: Build LiveDisplay native interface library
 # Sepolicy
 BOARD_SEPOLICY_DIRS += device/google/marlin/sepolicy/verizon
 
