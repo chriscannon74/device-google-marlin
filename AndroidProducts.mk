@@ -15,4 +15,8 @@
 #
 
 PRODUCT_MAKEFILES := \
+<<<<<<< HEAD
     $(LOCAL_DIR)/gzosp.mk
+=======
+	$(LOCAL_DIR)/aosip.mk
+>>>>>>> d566bf9... marlin/sailfish: initial AOSiP bringup
