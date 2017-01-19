@@ -18,5 +18,9 @@
 -->
 
 <resources>
+<<<<<<< HEAD
     <string name="wifi_calling_settings_title">WLAN Call</string>
+=======
+    <string name="wifi_calling_settings_title">WLAN call</string>
+>>>>>>> 4b51bb9... DTAG: Use "WLAN call" instead of "Wi-Fi Calling" in SPN and Setting.
 </resources>
