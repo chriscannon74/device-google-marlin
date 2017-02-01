@@ -10,6 +10,15 @@ TARGET_KERNEL_SOURCE := kernel/google/marlin
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
 BOARD_VENDOR_QCOM_LOC_PDK_FEATURE_SET := true
 
+<<<<<<< HEAD
+=======
+# Sepolicy
+BOARD_SEPOLICY_DIRS += device/google/marlin/sepolicy/verizon
+
+# Snapdragon LLVM
+TARGET_USE_SDCLANG := true
+
+>>>>>>> d6065c4... marlin/sailfish: include vzw-specific sepolicy
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
 
