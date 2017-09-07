@@ -476,6 +476,13 @@ LIBQDUTILS := libqdutils
 #LIBQDMETADATA
 LIBQDMETADATA := libqdMetaData
 
+<<<<<<< HEAD
+=======
+#LIBPOWER
+LIBPOWER := power.msm8996
+LIBPOWER += android.hardware.power@1.0-impl
+
+>>>>>>> 6d9ab9c... marlin: use msm8996 for power hal name
 #LLVM for RenderScript
 #use qcom LLVM
 $(call inherit-product-if-exists, external/llvm/llvm-select.mk)

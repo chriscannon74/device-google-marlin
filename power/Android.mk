@@ -39,6 +39,7 @@ ifneq ($(TARGET_USES_AOSP),true)
     LOCAL_CFLAGS += -DEXTRA_POWERHAL_HINTS
 endif
 
+<<<<<<< HEAD
 LOCAL_SHARED_LIBRARIES := \
     libbase \
     libcutils \
@@ -47,6 +48,15 @@ LOCAL_SHARED_LIBRARIES := \
     liblog \
     libutils \
     android.hardware.power@1.1 \
+=======
+LOCAL_CFLAGS += -Wno-unused-parameter
+
+LOCAL_MODULE := power.msm8996
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_OWNER := qcom
+LOCAL_PROPRIETARY_MODULE := true
+include $(BUILD_SHARED_LIBRARY)
+>>>>>>> 6d9ab9c... marlin: use msm8996 for power hal name
 
 include $(BUILD_EXECUTABLE)
 endif
