@@ -39,4 +39,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 >>>>>>> 59174c5... marlin: add nexus.xml for nexus/pixel experience
 # Update engine
 PRODUCT_PACKAGES += brillo_update_payload
+<<<<<<< HEAD
 >>>>>>> cb64866... marlin: add hardware key overlays
+=======
+
+GAPPS_VARIANT := full
+GAPPS_EXCLUDED_PACKAGES := EditorsDocs EditorsSheets EditorsSlides GoogleCamera PrebuiltNewsWeather Keep newswidget NewsstandStub
+GAPPS_FORCE_PACKAGE_OVERRIDES := true
+$(call inherit-product-if-exists, vendor/opengapps/build/opengapps-packages.mk)
+>>>>>>> f18ed40... Add OpenGapps
