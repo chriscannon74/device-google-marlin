@@ -457,8 +457,24 @@
          * The device must be provisioned with HDCP keys (for protected content). -->
     <bool name="config_enableWifiDisplay">true</bool>
 
+<<<<<<< HEAD
     <!-- Disable Project Fi app until a Fi SIM is inserted. -->
     <string-array name="config_disabledUntilUsedPreinstalledCarrierApps">
         <item>com.google.android.apps.tycho</item>
     </string-array>
+=======
+    <!-- Minimum color temperature, in Kelvin, supported by Night display. -->
+    <integer name="config_nightDisplayColorTemperatureMin">1296</integer>
+
+    <!-- Maximum color temperature, in Kelvin, supported by Night display. -->
+    <integer name="config_nightDisplayColorTemperatureMax">5082</integer>
+
+     <!-- Control whether the always on display mode is available. This should only be enabled on
+          devices where the display has be tuned to be power efficient in DOZE and/or DOZE_SUSPEND
+          states. -->
+    <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
+ 
+     <!-- Whether the display blanks itself when transitioning from a doze to a non-doze state -->
+    <bool name="config_displayBlanksAfterDoze">true</bool>
+>>>>>>> a35407f... marlin/sailfish: Enable Always On Display.
 </resources>
