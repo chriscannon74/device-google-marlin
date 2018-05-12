@@ -1,4 +1,4 @@
-<manifest version="1.0" type="device" target-level="2">
+<manifest version="1.0" type="device">
     <hal format="hidl">
         <name>android.hardware.audio</name>
         <transport>hwbinder</transport>
@@ -83,17 +83,15 @@
     <hal format="hidl">
         <name>android.hardware.drm</name>
         <transport>hwbinder</transport>
-        <version>1.1</version>
+        <version>1.0</version>
         <interface>
             <name>ICryptoFactory</name>
             <instance>widevine</instance>
-            <instance>clearkey</instance>
             <instance>default</instance>
         </interface>
         <interface>
             <name>IDrmFactory</name>
             <instance>widevine</instance>
-            <instance>clearkey</instance>
             <instance>default</instance>
         </interface>
     </hal>
@@ -194,7 +192,7 @@
     <hal format="hidl">
         <name>android.hardware.nfc</name>
         <transport>hwbinder</transport>
-        <version>1.1</version>
+        <version>1.0</version>
         <interface>
             <name>INfc</name>
             <instance>default</instance>
@@ -332,4 +330,3 @@
     </hal>
 
 </manifest>
-

@@ -117,6 +117,7 @@ PRODUCT_PROPERTY_OVERRIDES += aaudio.mmap_exclusive_policy=2
 PRODUCT_PROPERTY_OVERRIDES += aaudio.hw_burst_min_usec=2000
 
 PRODUCT_FULL_TREBLE_OVERRIDE := true
+PRODUCT_COMPATIBILITY_MATRIX_LEVEL_OVERRIDE := 27
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-service \
     android.hardware.bluetooth@1.0-service \
@@ -125,6 +126,7 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-service \
     android.hardware.light@2.0-service \
     android.hardware.memtrack@1.0-service \
+    android.hardware.nfc@1.0-service \
     android.hardware.power@1.1-service.marlin \
     android.hardware.sensors@1.0-service \
     android.hardware.vr@1.0-service \
@@ -147,10 +149,6 @@ PRODUCT_PACKAGES += \
 # Usb HAL
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.1-service.marlin
-
-# DRM HAL
-PRODUCT_PACKAGES += \
-    move_widevine_data.sh
 
 # Audio effects
 PRODUCT_PACKAGES += \
@@ -274,6 +272,8 @@ endif
 
 PRODUCT_COPY_FILES += \
     device/google/marlin/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
+
+PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/soc/624000.ufshc/by-name/system
 
 #FEATURE_OPENGLES_EXTENSION_PACK support string config file
 PRODUCT_COPY_FILES += \
@@ -404,6 +404,11 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product-if-exists, hardware/qcom/msm8996/msm8996.mk)
 $(call inherit-product-if-exists, vendor/qcom/gpu/msm8996/msm8996-gpu-vendor.mk)
 
+# TODO:
+# setup dm-verity configs.
+# PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/soc/7464900.sdhci/by-name/system
+# $(call inherit-product, build/target/product/verity.mk)
+
 #Property of the BDA module path for loading BDA
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.bt.bdaddr_path=/sys/module/bdaddress/parameters/bdaddress
@@ -424,8 +429,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_STATIC_BOOT_CONTROL_HAL := \
     bootctrl.msm8996 \
     libgptutils \
-    libz \
-    libcutils
+    libz
 PRODUCT_PACKAGES += \
     update_engine_sideload
 
@@ -459,11 +463,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     NfcNci \
     Tag \
-    android.hardware.nfc@1.1-service \
-
-#Secure Element Service
-PRODUCT_PACKAGES += \
-    SecureElement \
+    android.hardware.nfc@1.0-impl
 
 #GNSS HAL
 PRODUCT_PACKAGES += \
@@ -506,7 +506,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.camera.notify_nfc=1
 
 PRODUCT_COPY_FILES += \
-    device/google/marlin/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/libnfc-nci.conf \
+    device/google/marlin/nfc/libnfc-brcm.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-brcm.conf \
     device/google/marlin/nfc/libpn551_fw.so:$(TARGET_COPY_OUT_VENDOR)/firmware/libpn551_fw.so
 
 # Bootloader HAL used for A/B updates.
@@ -601,9 +601,30 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/google/marlin/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml
 
-PRODUCT_PACKAGES += \
-    vndk-sp
-
-# Enable Perfetto traced
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.traced.enable=1
+    ro.vendor.vndk.version=26.1.0 \
+
+PRODUCT_PACKAGES += \
+    android.hardware.renderscript@1.0.vndk-sp\
+    android.hardware.graphics.allocator@2.0.vndk-sp\
+    android.hardware.graphics.mapper@2.0.vndk-sp\
+    android.hardware.graphics.common@1.0.vndk-sp\
+    libhwbinder.vndk-sp\
+    libbase.vndk-sp\
+    libcutils.vndk-sp\
+    libhardware.vndk-sp\
+    libhidlbase.vndk-sp\
+    libhidltransport.vndk-sp\
+    libutils.vndk-sp\
+    libc++.vndk-sp\
+    libRS_internal.vndk-sp\
+    libRSDriver.vndk-sp\
+    libRSCpuRef.vndk-sp\
+    libbcinfo.vndk-sp\
+    libblas.vndk-sp\
+    libft2.vndk-sp\
+    libpng.vndk-sp\
+    libcompiler_rt.vndk-sp\
+    libbacktrace.vndk-sp\
+    libunwind.vndk-sp\
+    liblzma.vndk-sp\

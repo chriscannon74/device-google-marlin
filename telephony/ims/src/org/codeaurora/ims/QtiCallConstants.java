@@ -28,7 +28,7 @@
 
 package org.codeaurora.ims;
 
-import android.telephony.ims.ImsReasonInfo;
+import com.android.ims.ImsReasonInfo;
 
 /**
  * The class contains definitions for Qti specific constants related to any

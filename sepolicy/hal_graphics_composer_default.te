@@ -1,10 +1,11 @@
 userdebug_or_eng(`
   allow hal_graphics_composer_default diag_device:chr_file rw_file_perms;
 ')
-dontaudit hal_graphics_composer_default diag_device:chr_file rw_file_perms;
+userbuild(`
+  dontaudit hal_graphics_composer_default diag_device:chr_file rw_file_perms;
+')
 
 # misc
-typeattribute hal_graphics_composer_default data_between_core_and_vendor_violators;
 allow hal_graphics_composer_default display_data_file:dir create_dir_perms;
 allow hal_graphics_composer_default display_data_file:file create_file_perms;
 
@@ -23,4 +24,3 @@ allow hal_graphics_composer_default self:netlink_kobject_uevent_socket create_so
 
 # Access /sys/devices/virtual/graphics/fb0/mdp/caps and maybe others
 r_dir_file(hal_graphics_composer_default, sysfs_type)
-
