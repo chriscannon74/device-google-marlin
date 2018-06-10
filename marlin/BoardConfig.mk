@@ -114,8 +114,8 @@ BOARD_EGL_CFG := device/google/marlin/egl.cfg
 # Inline Building Kernel form Source
 KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-linux-android-4.9/bin
 KERNEL_TOOLCHAIN_PREFIX := aarch64-linux-android-
-TARGET_KERNEL_SOURCE := kernel/google/purez-kernel-marlin
-TARGET_KERNEL_CONFIG := purez_marlin_defconfig
+TARGET_KERNEL_SOURCE := kernel/google/marlin
+TARGET_KERNEL_CONFIG := lineageos_marlin_defconfig
 BOARD_KERNEL_IMAGE_NAME := Image.lz4-dtb
 
 BOARD_KERNEL_BASE        := 0x80000000

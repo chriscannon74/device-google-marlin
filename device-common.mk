@@ -18,12 +18,15 @@
 #
 # Everything in this directory will become public
 
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+    LOCAL_KERNEL := device/google/marlin-kernel/Image.lz4-dtb
+else
+LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+
 PRODUCT_SHIPPING_API_LEVEL := 25
 
 DEVICE_PACKAGE_OVERLAYS += device/google/marlin/overlay
-
-PRODUCT_ENFORCE_RRO_TARGETS := \
-    framework-res
 
 # Input device files
 PRODUCT_COPY_FILES += \
@@ -43,21 +46,8 @@ PRODUCT_COPY_FILES += \
 
 # Override heap growth limit due to high display density on device
 PRODUCT_PROPERTY_OVERRIDES += \
-<<<<<<< HEAD
     dalvik.vm.heapgrowthlimit=256m \
-=======
->>>>>>> e5b6392... marlin/sailfish: Update dalvik heap amd hwui overrides
     ro.telephony.default_cdma_sub=0
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.heapgrowthlimit=384m \
-    dalvik.vm.heapminfree=2m \
-    dalvik.vm.heapstartsize=8m \
-    dalvik.vm.heapgrowthlimit=288m \
-    dalvik.vm.heapsize=768m \
-    dalvik.vm.heaptargetutilization=0.75 \
-    dalvik.vm.heapminfree=2m \
-    dalvik.vm.heapmaxfree=8m
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, device/google/marlin/common/common64.mk)
@@ -78,36 +68,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qcom.adreno.qgl.ShaderStorageImageExtendedFormats=0
 
-# touch
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.qti.inputopts.enable=true \
-    persist.vendor.qti.inputopts.movetouchslop=0.6
-
 # HWUI common settings
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hwui.gradient_cache_size=2 \
-    ro.hwui.drop_shadow_cache_size=8 \
+    ro.hwui.gradient_cache_size=1 \
+    ro.hwui.drop_shadow_cache_size=6 \
     ro.hwui.r_buffer_cache_size=8 \
     ro.hwui.texture_cache_flushrate=0.4 \
-<<<<<<< HEAD
     ro.hwui.text_small_cache_width=1024 \
     ro.hwui.text_small_cache_height=1024 \
     ro.hwui.text_large_cache_width=2048 \
     ro.hwui.text_large_cache_height=1024
-=======
-    ro.hwui.texture_cache_size=88 \
-    ro.hwui.layer_cache_size=58 \
-    ro.hwui.path_cache_size=32 \
-    ro.hwui.shape_cache_size=4 \
-    ro.hwui.text_small_cache_width=2048 \
-    ro.hwui.text_small_cache_height=2048 \
-    ro.hwui.text_large_cache_width=4096 \
-    ro.hwui.text_large_cache_height=4096
-
-# enable FIFO UI scheduling by default
-PRODUCT_PROPERTY_OVERRIDES += \
-    sys.use_fifo_ui=1
->>>>>>> e5b6392... marlin/sailfish: Update dalvik heap amd hwui overrides
 
 # For android_filesystem_config.h
 PRODUCT_PACKAGES += fs_config_files \
@@ -338,7 +308,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Write Manufacturer & Model information in created media files.
 # IMPORTANT: ONLY SET THIS PROPERTY TO TRUE FOR PUBLIC DEVICES
-ifneq ($(filter aosp_sailfish% sailfish% aosp_marlin% marlin%, $(TARGET_PRODUCT)),)
+ifneq ($(filter gzosp_sailfish% aosp_sailfish% sailfish% gzosp_marlin% aosp_marlin% marlin%, $(TARGET_PRODUCT)),)
 PRODUCT_PROPERTY_OVERRIDES += \
     media.recorder.show_manufacturer_and_model=true
 else
