@@ -333,11 +333,6 @@
     <!-- Flag specifying whether VoLTE is availasble on device -->
     <bool name="config_device_volte_available">true</bool>
 
-    <!-- Flag specifying whether VoLTE should be available for carrier: independent of
-         carrier provisioning. If false: hard disabled. If true: then depends on carrier
-         provisioning, availability etc -->
-    <bool name="config_carrier_volte_available">true</bool>
-
     <!-- Flag specifying whether VoLTE is available on device -->
     <bool name="config_device_vt_available">true</bool>
 
@@ -448,8 +443,6 @@
 
      <!-- True if Unprocessed audio source supports the required frequency range and level -->
     <bool name="config_supportAudioSourceUnprocessed">true</bool>
-<<<<<<< HEAD
-=======
 
     <!-- Whether WiFi display is supported by this device.
          There are many prerequisites for this feature to work correctly.
@@ -464,24 +457,8 @@
          * The device must be provisioned with HDCP keys (for protected content). -->
     <bool name="config_enableWifiDisplay">true</bool>
 
-    <!-- Minimum color temperature, in Kelvin, supported by Night display. -->
-    <integer name="config_nightDisplayColorTemperatureMin">1296</integer>
-
-    <!-- Maximum color temperature, in Kelvin, supported by Night display. -->
-    <integer name="config_nightDisplayColorTemperatureMax">5082</integer>
-
-     <!-- Control whether the always on display mode is available. This should only be enabled on
-          devices where the display has be tuned to be power efficient in DOZE and/or DOZE_SUSPEND
-          states. -->
-    <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
- 
-     <!-- Whether the display blanks itself when transitioning from a doze to a non-doze state -->
-    <bool name="config_displayBlanksAfterDoze">true</bool>
-    <integer name="config_deviceLightCapabilities">75</integer>
-
     <!-- Disable Project Fi app until a Fi SIM is inserted. -->
     <string-array name="config_disabledUntilUsedPreinstalledCarrierApps">
         <item>com.google.android.apps.tycho</item>
     </string-array>
->>>>>>> b3a359c... marlin: Disable Project Fi app until a Fi SIM is inserted
 </resources>
